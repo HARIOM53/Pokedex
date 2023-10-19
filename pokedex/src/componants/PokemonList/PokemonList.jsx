@@ -1,21 +1,16 @@
 import './PokemonList.css';
 import Pokemon from "../Pokemon/Pokemon";
 import usePokemonList from "../../hooks/usePokemonList";
+import { useEffect } from 'react';
 
 
 function PokemonList() {
 
-    // const [pokemonList, setPokemonList] = useState([]);
-    // const [isLoading, setIsLoading] = useState(true);
-
-    // const [pokedexUrl, setPokedexUrl] = useState('http://pokeapi.co/api/v2/pokemon');
-
-    // const [nextUrl, setNextUrl] = useState('')
-
-    // const [prevUrl, setPrevUrl] = useState('')
 
    const [pokemonListState, setPokemonListState] = usePokemonList(false);
-
+    useEffect(()=> {
+        console.log('rander');
+    });
    
     return(
         <div className="pokemon-list-wrapper">

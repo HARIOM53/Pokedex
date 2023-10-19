@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useEffect, useState 
-} from "react";
+import { useEffect, useState } from "react";
 
 function usePokemonList(type) {
     const [pokemonListState, setPokemonListState] = useState({
@@ -20,10 +19,7 @@ function usePokemonList(type) {
     
             const pokemonResults = response.data.results;  // we get the array of pokemons from result
             
-    
             
-            console.log("response ise", response.data.pokemon);
-            console.log(pokemonListState);
             setPokemonListState((state) => ({
                 ...state,
                 nextUrl: response.data.next,
@@ -35,7 +31,6 @@ function usePokemonList(type) {
 
         // passing that promise array to axios.all
         const pokemonData = await axios.all(pokemonResultPromise); // array of 20 pokemon  detailed data
-        console.log(pokemonData);
 
         // now iteretor on the data of each pokemon , and extract id , name , image , types
         const pokeListResult = pokemonData.map((pokeData) => {
@@ -48,7 +43,6 @@ function usePokemonList(type) {
                 types: pokemon.types
             }
         })
-        // console.log(pokeListResult);
         setPokemonListState((state) => ({...state, pokemonList: pokeListResult, isLoading: false}));
         
 
